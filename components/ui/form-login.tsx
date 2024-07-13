@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { loginAction } from '@/actions/auth-action';
 
 const FormLogin = () => {
 
@@ -26,10 +27,8 @@ const FormLogin = () => {
         },
       })
 
-      function onSubmit(values: z.infer<typeof loginSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values)
+      async function onSubmit(values: z.infer<typeof loginSchema>) {
+        await loginAction(values)
       }
 
     
